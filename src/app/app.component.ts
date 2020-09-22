@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'orbit-report';
   sourceList: Satellite[];
   displayList: Satellite[];
-  constructor(displayList = [])/*Instructions say to do this, but Angular does not like it?*/ {
+  constructor() {
     this.sourceList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
  
@@ -27,18 +27,6 @@ export class AppComponent {
     }.bind(this));
  
  }
- search(searchTerm: string): void {
-  let matchingSatellites: Satellite[] = [];
-  searchTerm = searchTerm.toLowerCase();
-  for(let i=0; i < this.sourceList.length; i++) {
-     let name = this.sourceList[i].name.toLowerCase();
-     if (name.indexOf(searchTerm) >= 0) {
-        matchingSatellites.push(this.sourceList[i]);
-     }
-  }
-  
-  this.displayList = matchingSatellites;
-  }
 }
   
   /*The OG constructor() {
